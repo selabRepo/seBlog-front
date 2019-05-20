@@ -27,17 +27,16 @@ class Header extends Component {
   render() {
 
     const headerList = [
-        {name : 'Home', link: '/'},
-        {name: 'About',link : '/about'},
-        {name: 'Blog', link: '/blog'},
-        {name:'MYMAP', link : 'myMap'},
+        { name : 'Home', link : '/'},
+        { name : 'About',link : '/about'},
+        { name : 'Blog', link : '/blog'},
+        { name :'MYMAP', link : 'myMap'},
     ].map((headerLi,index) =>
         <Link href={headerLi.link}>
             <li className={'header_li'} key={index}>
                 <h3 className={"h3-responsive text-center my-1"}>{headerLi.name}</h3>
             </li>
         </Link>
-
     )
     return (
       <>
