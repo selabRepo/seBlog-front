@@ -4,6 +4,7 @@ import PostLink from '../components/PostLink'
 import * as React from 'react'
 import fetch from 'isomorphic-unfetch'
 import ImageSlider from "../components/ImageSlider/ImageSlider";
+import MainPost from "../components/MainPost/MainPost";
 
 class Index extends React.Component {
     
@@ -24,13 +25,7 @@ class Index extends React.Component {
             <>
                 <Layout>
                 <ImageSlider/>
-                <div>
-                    hello world
-                </div>
-                <ul>
-                    {showList}
-                    <PostLink id={"abc"} title={"title"}/>
-                </ul>
+                <MainPost/>
                 </Layout>
             </>
         )
