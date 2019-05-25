@@ -4,8 +4,9 @@
 // (But you could use ES2015 features supported by your Node.js version)
 const path = require('path')
 const withCSS = require('@zeit/next-css')
+const withSCSS = require('@zeit/next-sass')
 
-module.exports = withCSS({
+module.exports = withSCSS(withCSS({
     webpack: (config, { dev }) => {
       // Perform customizations to config
       // Important: return the modified config
@@ -14,4 +15,4 @@ module.exports = withCSS({
     cssLoaderOptions: {
       url: false
     }
-})
+}))
