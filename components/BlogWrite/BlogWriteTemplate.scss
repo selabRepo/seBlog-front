@@ -18,5 +18,14 @@
       cursor: col-resize;
       background: silver;
     }
+    @media all and (max-width: 768px) {
+      .editor {
+        flex: 1!important;
+      }
+
+      .preview, .divide {
+        display: none;
+      }
+    }
   }
 }

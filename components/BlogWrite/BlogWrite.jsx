@@ -2,15 +2,15 @@ import React from 'react'
 import Container from '@material-ui/core/Container'
 import BlogWriteTemplate from "./BlogWriteTemplate";
 import BlogWriteHeader from "./BlogWriteHeader";
+import BlogPane from '../BlogPane'
+import BlogPreview from "../BlogPreview";
 
 const BlogWrite = ({}) => {
     return (
-        <Container maxWidthXs fixed>
             <BlogWriteTemplate
                 header={<BlogWriteHeader/>}
-                editor={"editor"}
-                preview={"preview"}/>
-        </Container>
+                editor={<BlogPane/>}
+                preview={<BlogPreview/>}/>
     )
 }
 

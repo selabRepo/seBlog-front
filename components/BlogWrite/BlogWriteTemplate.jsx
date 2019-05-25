@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './BlogWrite.scss';
+import './BlogWriteTemplate.scss';
 import PropTypes from 'prop-types'
 
 class BlogWriteTemplate extends Component {
