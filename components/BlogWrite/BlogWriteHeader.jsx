@@ -1,17 +1,13 @@
 import React from 'react';
-import './BlogWriteHeader.scss';
+import { MDBBtn } from "mdbreact";
+import styled from 'styled-components';
 
-import Button from '@material-ui/core/Button';
 
 const BlogWriteHeader = ({ onBack, onSubmit }) => {
     return (
-        <div className="editor-header">
-            <div className="back">
-                <Button onClick={onBack} color="white" variant="raised">뒤로가기</Button>
-            </div>
-            <div className="submit">
-                <Button onClick={onSubmit} color="primary" variant="raised">저장하기</Button>
-            </div>
+        <div>
+            <MDBBtn color="primary">뒤로가기</MDBBtn>
+            <MDBBtn color="primary" style={{marginLeft: 20}}>저장하기</MDBBtn>
         </div>
     );
 };
