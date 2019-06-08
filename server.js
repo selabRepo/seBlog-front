@@ -16,6 +16,12 @@ app.prepare()
             app.render(req,res,actualPage, queryParams)
         })
 
+
+        server.use('/upload',express.static('uploadImageFile'))
+
+        // Server Routing
+        require('./server/routes/fileUpload.route')(server)
+
         server.get('*' , (req, res) => {
             handle(req,res)
         })
