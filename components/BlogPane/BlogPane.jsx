@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './BlogPane.scss';
 
 import Editor from 'rich-markdown-editor'
+import axios from 'axios'
 
 class BlogPane extends Component {
     constructor() {
@@ -20,6 +21,15 @@ class BlogPane extends Component {
         })
     }
 
+    uploadImage = async file => {
+        const data = new FormData()
+        data.append('file', file, file.name)
+
+        const resultUrl = await axios.post('/fileUpload',data)
+        return `/${resultUrl.data.replace('uploadImageFile','upload')}`
+    }
+
+
     render() {
         return (
             <div className="editor-pane">
@@ -28,6 +38,7 @@ class BlogPane extends Component {
                     id={"markdownEditor"}
                     onChange={this.updateCodeState}
                     dark={this.state.isDark}
+                    uploadImage={this.uploadImage}
                     toc
                 />
             </div>
