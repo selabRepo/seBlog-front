@@ -37,7 +37,7 @@ class BlogPane extends Component {
                 <Editor
                     id={"markdownEditor"}
                     onChange={this.updateCodeState}
-                    dark={this.state.isDark}
+                    dark={false}
                     uploadImage={this.uploadImage}
                     toc
                 />
