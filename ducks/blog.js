@@ -1,6 +1,7 @@
 const ADD_BLOG_TEXT = 'blog/ADD_BLOG_TEXT'
 const ADD_BLOG_CATEGORY ='blog/ADD_BLOG_CATEGORY'
 const ADD_BLOG_TITLE = 'blog/ADD_BLOG_TITLE'
+const ADD_BLOG_TITLE_AND_TEXT = 'blog/ADD_BLOG_TITLE_AND_TEXT'
 
 const initialState = {
     category : null,
@@ -27,6 +28,13 @@ export default function reducer(state = initialState, action) {
                 title: action.title
             }
         }
+        case ADD_BLOG_TITLE_AND_TEXT: {
+            return {
+                ...state,
+                title: state.title,
+                text: state.text,
+            }
+        }
         default:
             return state
     }
@@ -46,9 +54,10 @@ export function addBlogText(text) {
     }
 }
 
-export function addBlogTitle(title) {
+export function addBlogTitleAndText(title, text) {
     return {
         title,
+        text,
         type: ADD_BLOG_TITLE,
     }
 }

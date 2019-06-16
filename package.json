@@ -18,6 +18,7 @@
     "express": "^4.16.4",
     "immutable": "^4.0.0-rc.12",
     "isomorphic-unfetch": "^3.0.0",
+    "lodash": "^4.17.11",
     "material-auto-rotating-carousel": "^3.0.1",
     "mdbreact": "^4.15.0",
     "multer": "^1.4.1",
