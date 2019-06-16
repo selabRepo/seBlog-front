@@ -3,14 +3,17 @@ import Container from '@material-ui/core/Container'
 import BlogWriteTemplate from "./BlogWriteTemplate";
 import BlogWriteHeader from "./BlogWriteHeader";
 import BlogPane from '../BlogPane'
-import BlogPreview from "../BlogPreview";
+import BlogCategorySelect from "../BlogCategorySelect/BlogCategorySelect";
 
 const BlogWrite = ({}) => {
     return (
+        <Container>
             <BlogWriteTemplate
                 header={<BlogWriteHeader/>}
                 editor={<BlogPane/>}
-                preview={<BlogPreview/>}/>
+                categorySelect={<BlogCategorySelect/>}
+                />
+        </Container>
     )
 }
 

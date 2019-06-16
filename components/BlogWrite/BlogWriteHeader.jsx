@@ -1,19 +1,31 @@
-import React from 'react';
-import './BlogWriteHeader.scss';
+import React, { Component } from 'react';
+import { MDBBtn } from "mdbreact";
+import { connect } from "react-redux";
 
-import Button from '@material-ui/core/Button';
+class BlogWriteHeader extends Component {
 
-const BlogWriteHeader = ({ onBack, onSubmit }) => {
-    return (
-        <div className="editor-header">
-            <div className="back">
-                <Button onClick={onBack} color="white" variant="raised">뒤로가기</Button>
+    handleSave = (evt) => {
+        evt.preventDefault()
+        console.log(this.props.category.category)
+    }
+
+    render() {
+        return (
+            <div>
+                <MDBBtn color="primary">뒤로가기</MDBBtn>
+                <MDBBtn color="primary" style={{marginLeft: 20}} onClick={this.handleSave}>저장하기</MDBBtn>
             </div>
-            <div className="submit">
-                <Button onClick={onSubmit} color="primary" variant="raised">저장하기</Button>
-            </div>
-        </div>
-    );
-};
+        );
+    }
+}
 
-export default BlogWriteHeader;
+// props 로 넣어줄 스토어 상태값
+const mapStateToProps = state => ({
+    category: state.category,
+});
+  
+  // props 로 넣어줄 액션 생성함수
+const mapDispatchToProps = dispatch => ({
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(BlogWriteHeader);

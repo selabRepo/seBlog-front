@@ -1,8 +1,6 @@
-import Link from 'next/link'
 import Layout from '../components/Layout';
 import PostLink from '../components/PostLink'
 import * as React from 'react'
-import fetch from 'isomorphic-unfetch'
 import ImageSlider from "../components/ImageSlider/ImageSlider";
 import MainPost from "../components/MainPost/MainPost";
 
