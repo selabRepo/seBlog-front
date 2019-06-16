@@ -3,27 +3,25 @@ import './BlogPane.scss';
 import Editor from 'rich-markdown-editor'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import { debounce } from 'lodash'
-import { addBlogText, addBlogTitleAndText } from '../../ducks/blog';
+import { addBlogText, addBlogTitle } from '../../ducks/blog';
 import { blogSave } from '../../ducks/event';
 
 class BlogPane extends Component {
-    constructor() {
+    constructor(props) {
         super()
         this.state = {
             codeState: null,
             isDark: true,
             title: null,
         }
-        this.updateCodeState = debounce(this.updateCodeState, 500)
+        this.text = null
+        this.title = null
     }
 
     updateCodeState = (value) => {
 
         const codeState = value()
-        this.setState({
-            codeState
-        })
+        this.text = codeState
     }
 
     uploadImage = async file => {
@@ -35,33 +33,32 @@ class BlogPane extends Component {
     }
 
     handleTitleChange = evt => {
-
-        console.log(evt.target.value)
-        this.setState({
-            title: evt.target.value,
-        })
-        // this.props.addBlogTitle(evt.target.value)
+        this.title = evt.target.value
     }
 
-    componentDidUpdate() {
-        const { blogSave } = this.props.event
-        const { codeState, title } = this.state
-        if (blogSave) {
-            this.props.addBlogTitleAndText(codeState, title)
-            this.props.blogSave(false)
-        }
+    handleBlogText = () => {
+        this.props.addBlogText(this.text)
+    }
+
+    handleBlogTitle = () => {
+        this.props.addBlogTitle(this.title)
     }
 
     render() {
-        console.log(this.state.codeState)
         return (
             <div className="editor-pane">
-                <input className="title" placeholder="제목 입력" name="title" onChange={this.handleTitleChange}/>
+                <input 
+                    className="title" 
+                    placeholder="제목 입력" 
+                    name="title" 
+                    onChange={this.handleTitleChange}
+                    onBlur={this.handleBlogTitle}/>
                 <Editor
                     id={"markdownEditor"}
                     onChange={this.updateCodeState}
                     dark={false}
                     uploadImage={this.uploadImage}
+                    onBlur={this.handleBlogText}
                     toc
                 />
             </div>
@@ -70,12 +67,12 @@ class BlogPane extends Component {
 }
 
 const mapStateToProps = state => ({
-    event: state.event,
 });
   
   // props 로 넣어줄 액션 생성함수
 const mapDispatchToProps = dispatch => ({
-    addBlogTitleAndText: (title, text) => dispatch(addBlogTitleAndText(title, text)),
+    addBlogTitle: (title) => dispatch(addBlogTitle(title)),
+    addBlogText: (text) => dispatch(addBlogText(text)),
     blogSave: (isSave) => dispatch(blogSave(isSave)),
 });
 

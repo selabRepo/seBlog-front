@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
-import { MDBBtn } from "mdbreact";
+import { MDBBtn, MDBNotification, MDBContainer} from "mdbreact";
 import { connect } from "react-redux";
-import { blogSave } from '../../ducks/event';
+import { blogSave, blogNotifyError } from '../../ducks/event';
 
 class BlogWriteHeader extends Component {
 
     handleSave = (evt) => {
         evt.preventDefault()
-        console.log(this.props.blog)
-        this.props.blogSave(true)
-        // TODO: api Server로 전송
+        const { category, text, title } = this.props.blog
+        if (!category || !text || !title) {
+            this.props.blogNotifyError(true)
+            return
+        } else {
+            // TODO: api Server로 전송
+            this.props.blogNotifyError(false)
+            //axios.post('/blog', JSON.stringify(this.props.blog))
+        }
     }
 
     render() {
@@ -28,7 +34,7 @@ const mapStateToProps = state => ({
   
   // props 로 넣어줄 액션 생성함수
 const mapDispatchToProps = dispatch => ({
-    blogSave: (isSave) => dispatch(blogSave(isSave)),
+    blogNotifyError: (isError) => dispatch(blogNotifyError(isError)),
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(BlogWriteHeader);

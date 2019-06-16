@@ -54,6 +54,13 @@ export function addBlogText(text) {
     }
 }
 
+export function addBlogTitle(title) {
+    return {
+        title,
+        type: ADD_BLOG_TITLE,
+    }
+}
+
 export function addBlogTitleAndText(title, text) {
     return {
         title,
