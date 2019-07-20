@@ -30,6 +30,7 @@ BlogWriteTemplate.propTypes = {
     header: PropTypes.any,
     editor: PropTypes.any,
     categorySelect: PropTypes.any,
+    notifications: PropTypes.any,
 }
 
 export default BlogWriteTemplate;
