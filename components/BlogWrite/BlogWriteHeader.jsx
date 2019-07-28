@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { MDBBtn, MDBNotification, MDBContainer } from 'mdbreact'
 import { connect } from 'react-redux'
-import { blogSave, blogNotifyError } from '../../ducks/event'
+import { blogNotifyError } from '../../ducks/event'
+import { bindActionCreators } from 'redux'
+import * as blogActions from '../../ducks/blog'
 
 class BlogWriteHeader extends Component {
   handleSave = evt => {
@@ -11,9 +13,25 @@ class BlogWriteHeader extends Component {
       this.props.blogNotifyError(true)
       return
     } else {
-      // TODO: api Server로 전송
-      this.props.blogNotifyError(false)
-      //axios.post('/blog', JSON.stringify(this.props.blog))
+      const { blogNotifyError, BlogActions } = this.props
+
+      blogNotifyError(false)
+      BlogActions.postBlog({
+        categoryID: category,
+        content,
+        title,
+        createdBy: 'jyb',
+      })
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { BlogActions, blog } = this.props
+    const { isSuccess } = blog
+    if (!prevProps.blog.isSuccess && isSuccess) {
+      alert('게시물이 정상적으로 업로드 되었습니다.')
+      BlogActions.initState()
+      location.href = '/blog'
     }
   }
 
@@ -21,11 +39,7 @@ class BlogWriteHeader extends Component {
     return (
       <div>
         <MDBBtn color="primary">뒤로가기</MDBBtn>
-        <MDBBtn
-          color="primary"
-          style={{ marginLeft: 20 }}
-          onClick={this.handleSave}
-        >
+        <MDBBtn color="primary" style={{ marginLeft: 20 }} onClick={this.handleSave}>
           저장하기
         </MDBBtn>
       </div>
@@ -33,16 +47,12 @@ class BlogWriteHeader extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  blog: state.blog,
-})
-
-// props 로 넣어줄 액션 생성함수
-const mapDispatchToProps = dispatch => ({
-  blogNotifyError: isError => dispatch(blogNotifyError(isError)),
-})
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  state => ({
+    blog: state.blog,
+  }),
+  dispatch => ({
+    blogNotifyError: isError => dispatch(blogNotifyError(isError)),
+    BlogActions: bindActionCreators(blogActions, dispatch),
+  }),
 )(BlogWriteHeader)

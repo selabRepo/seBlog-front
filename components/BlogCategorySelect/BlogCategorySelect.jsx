@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addBlogCategory } from '../../ducks/blog'
 import { bindActionCreators } from 'redux'
 import * as categoryActions from '../../ducks/category'
+import * as blogActions from '../../ducks/blog'
 
 class BlogCategorySelect extends React.Component {
   handleChange = evt => {
-    this.props.addBlogCategory(evt.target.value)
+    const { BlogActions } = this.props
+    BlogActions.addBlogCategory(evt.target.value)
   }
 
   async componentWillMount() {
@@ -33,7 +34,7 @@ export default connect(
     category: state.category.category,
   }),
   dispatch => ({
-    addBlogCategory: category => dispatch(addBlogCategory(category)),
+    BlogActions: bindActionCreators(blogActions, dispatch),
     CategoryActions: bindActionCreators(categoryActions, dispatch),
   }),
 )(BlogCategorySelect)
