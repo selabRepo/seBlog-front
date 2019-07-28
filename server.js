@@ -2,36 +2,32 @@ const express = require('express')
 const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({dev})
+const app = next({
+  dev,
+})
 const handle = app.getRequestHandler()
+const proxy = require('http-proxy-middleware')
+require('dotenv').config()
 
-app.prepare()
-    .then(()=>{
-        const server = express()
+app
+  .prepare()
+  .then(() => {
+    const server = express()
+    server.use('/api', proxy({ target: process.env.SERVER_URI, changeOrigin: true }))
+    server.use('/upload', express.static('uploadImageFile'))
 
-        server.get('/post/:id', (req, res) => {
+    // Server Routing
+    require('./server/routes/fileUpload.route')(server)
 
-            const actualPage = '/post'
-            const queryParams = {title : req.params.id}
-            app.render(req,res,actualPage, queryParams)
-        })
-
-
-        server.use('/upload',express.static('uploadImageFile'))
-
-        // Server Routing
-        require('./server/routes/fileUpload.route')(server)
-
-        server.get('*' , (req, res) => {
-            handle(req,res)
-        })
-
-        
-        server.listen(3000, (err) => {
-            if(err) throw new Error(err)
-            console.log('Server Started!!')
-        })
+    server.get('*', (req, res) => {
+      handle(req, res)
     })
-    .catch(err => {
-        console.log(err.stack)
+
+    server.listen(3000, err => {
+      if (err) throw new Error(err)
+      console.log('Server Started!!')
     })
+  })
+  .catch(err => {
+    console.log(err.stack)
+  })
