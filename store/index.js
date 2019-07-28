@@ -1,6 +1,11 @@
-/* ./stores.js */
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import index from '../ducks';
-const finalCreateStore = applyMiddleware(thunk)(createStore);
-export default finalCreateStore(index);
+import { createStore, applyMiddleware } from 'redux'
+import reducers from '../ducks'
+
+import { createLogger } from 'redux-logger'
+import ReduxThunk from 'redux-thunk'
+import penderReducer from 'redux-pender'
+
+const logger = createLogger({})
+const store = createStore(reducers, applyMiddleware(logger, ReduxThunk, penderReducer()))
+
+export default store
