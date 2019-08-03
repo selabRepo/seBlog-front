@@ -14,9 +14,7 @@ class BlogList extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log(this.props.blogList)
-  }
+  componentDidUpdate(prevProps, prevState) {}
   render() {
     const { content } = this.props.blogList
     return (

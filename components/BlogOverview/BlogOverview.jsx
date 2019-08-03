@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { MDBRow, MDBCol, MDBView, MDBMask, MDBBtn } from 'mdbreact'
+import Link from 'next/link'
 
 const BlogOverview = ({ contents }) => {
   return (
@@ -18,11 +19,7 @@ const BlogOverview = ({ contents }) => {
           <h3 className="font-weight-bold mb-3 p-0">
             <strong>{contents.title}</strong>
           </h3>
-          <p className="dark-grey-text">
-            Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-            placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis debitis cum
-            soluta nobis est eligendi placeat facere aut rerum.
-          </p>
+
           <p>
             by{' '}
             <a href="#!" className="font-weight-bold">
@@ -30,9 +27,11 @@ const BlogOverview = ({ contents }) => {
             </a>
             , {contents.createdDate}
           </p>
-          <MDBBtn color="primary" size="md">
-            Read More
-          </MDBBtn>
+          <Link as={`/blog/${contents.id}`} href={`/blog/blogDetail?blogNo=${contents.id}`}>
+            <MDBBtn color="primary" size="md">
+              Read More
+            </MDBBtn>
+          </Link>
         </MDBCol>
       </MDBRow>
       <hr className="my-5" />
