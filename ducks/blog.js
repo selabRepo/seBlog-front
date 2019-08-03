@@ -9,7 +9,7 @@ const POST_BLOG = 'blog/POST_BLOG'
 const INIT_STATE = 'blog/INIT_STATE'
 
 const initialState = {
-  category: null,
+  categoryID: null,
   content: null,
   date: null,
   title: null,
@@ -28,9 +28,9 @@ export const addBlogContent = createAction(ADD_BLOG_CONTENT, content => {
     content,
   }
 })
-export const addBlogCategory = createAction(ADD_BLOG_CATEGORY, category => {
+export const addBlogCategory = createAction(ADD_BLOG_CATEGORY, categoryID => {
   return {
-    category,
+    categoryID,
   }
 })
 
@@ -51,7 +51,7 @@ export default handleActions(
     [ADD_BLOG_CATEGORY]: (state, action) => {
       return {
         ...state,
-        category: action.payload.category,
+        categoryID: action.payload.categoryID,
       }
     },
     [ADD_BLOG_TITLE]: (state, action) => {
