@@ -4,15 +4,21 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as blogAction from '../../ducks/blog'
 import PropTypes from 'prop-types'
+import BlogCodeBlock from './BlogCodeBlock'
+import { Container } from '@material-ui/core'
 class BlogDetail extends Component {
   componentDidMount(prevProps, prevState) {
     this.props.BlogAction.getBlogDetail(this.props.blogNo)
   }
+  componentDidUpdate(prevProps, prevState) {
+    console.log(this.props.blog.content)
+  }
   render() {
+    const { blog } = this.props
     return (
-      <div>
-        <ReactMarkDown source={(this.props.blog && this.props.blog.content) || ''} />
-      </div>
+      <Container>
+        {blog && blog.content && <ReactMarkDown source={blog.content} renderers={{ code: BlogCodeBlock }} />}
+      </Container>
     )
   }
 }
