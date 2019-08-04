@@ -6,10 +6,11 @@ const ADD_BLOG_CONTENT = 'blog/ADD_BLOG_CONTENT'
 const ADD_BLOG_CATEGORY = 'blog/ADD_BLOG_CATEGORY'
 const ADD_BLOG_TITLE = 'blog/ADD_BLOG_TITLE'
 const POST_BLOG = 'blog/POST_BLOG'
+const GET_BLOG_DETAIL = 'blog/GET_BLOG_DETAIL'
 const INIT_STATE = 'blog/INIT_STATE'
 
 const initialState = {
-  category: null,
+  categoryID: null,
   content: null,
   date: null,
   title: null,
@@ -28,16 +29,18 @@ export const addBlogContent = createAction(ADD_BLOG_CONTENT, content => {
     content,
   }
 })
-export const addBlogCategory = createAction(ADD_BLOG_CATEGORY, category => {
+export const addBlogCategory = createAction(ADD_BLOG_CATEGORY, categoryID => {
   return {
-    category,
+    categoryID,
   }
 })
 
 export const initState = createAction(INIT_STATE)
-
 export const postBlog = createAction(POST_BLOG, blog => {
   return axios.post('/api/blogs', blog)
+})
+export const getBlogDetail = createAction(GET_BLOG_DETAIL, blogNo => {
+  return axios.get(`/api/blogs/${blogNo}`)
 })
 
 export default handleActions(
@@ -51,7 +54,7 @@ export default handleActions(
     [ADD_BLOG_CATEGORY]: (state, action) => {
       return {
         ...state,
-        category: action.payload.category,
+        categoryID: action.payload.categoryID,
       }
     },
     [ADD_BLOG_TITLE]: (state, action) => {
@@ -76,6 +79,15 @@ export default handleActions(
         return {
           ...state,
           isFail: true,
+        }
+      },
+    }),
+    ...pender({
+      type: GET_BLOG_DETAIL,
+      onSuccess: (state, action) => {
+        return {
+          ...state,
+          ...action.payload.data,
         }
       },
     }),

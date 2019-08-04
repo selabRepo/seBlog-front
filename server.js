@@ -18,6 +18,7 @@ app
 
     // Server Routing
     require('./server/routes/fileUpload.route')(server)
+    require('./server/routes/blogDetail.route')(app, server)
 
     server.get('*', (req, res) => {
       handle(req, res)

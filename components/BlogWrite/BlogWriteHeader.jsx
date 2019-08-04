@@ -8,8 +8,8 @@ import * as blogActions from '../../ducks/blog'
 class BlogWriteHeader extends Component {
   handleSave = evt => {
     evt.preventDefault()
-    const { category, content, title } = this.props.blog
-    if (!category || !content || !title) {
+    const { categoryID, content, title } = this.props.blog
+    if (!categoryID || !content || !title) {
       this.props.blogNotifyError(true)
       return
     } else {
@@ -17,7 +17,7 @@ class BlogWriteHeader extends Component {
 
       blogNotifyError(false)
       BlogActions.postBlog({
-        categoryID: category,
+        categoryID,
         content,
         title,
         createdBy: 'jyb',
