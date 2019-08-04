@@ -1,7 +1,10 @@
 module.exports = {
-  blogDetailGET: app => (req, res) => {
+  blogDetailGET: app => (req, res, next) => {
     const { blogNo } = req.params
     const page = '/blog/blogDetail'
-    app.render(req, res, page, { blogNo })
+    if (/^[0-9]*$/.test(blogNo)) {
+      return app.render(req, res, page, { blogNo })
+    }
+    next()
   },
 }
