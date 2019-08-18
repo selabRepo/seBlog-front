@@ -15,6 +15,7 @@ app
     const server = express()
     server.use('/api', proxy({ target: process.env.SERVER_URI, changeOrigin: true }))
     server.use('/upload', express.static('uploadImageFile'))
+    server.use('/static', express.static('static'))
 
     // Server Routing
     require('./server/routes/fileUpload.route')(server)
