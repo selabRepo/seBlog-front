@@ -5,13 +5,7 @@ class CustomDocument extends Document {
     return (
       <html>
         <Head />
-        <style jsx>
-          {`
-            body {
-              margin: 0px;
-            }
-          `}
-        </style>
+        <link href="/static/css/reset.css" rel="stylesheet" />
         <body>
           <Main />
           <NextScript />

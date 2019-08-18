@@ -12,6 +12,7 @@ class BlogList extends Component {
     if (blogList.content.length === 0) {
       BlogListAction.getBlogList({})
     }
+    console.log(blogList)
   }
 
   componentDidUpdate(prevProps, prevState) {}
