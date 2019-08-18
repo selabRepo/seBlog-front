@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 import './_Header.scss'
+import User from '../User'
 
 class Header extends Component {
   render() {
     return (
       <header className="header">
-        <div className="Mainheader">
-          <div className="info">
-            <a href="/" className="page">
-              <img src={'/upload/user.png'} alt="user" className="img" />
-            </a>
-          </div>
-        </div>
+        <div className="Mainheader" />
+        <User />
       </header>
     )
   }
