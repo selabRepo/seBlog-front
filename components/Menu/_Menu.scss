@@ -1,6 +1,7 @@
 .menu{
-    height: 100%;
-    position: fixed;
+    overflow:hidden;
+    height: 1000px;
+    position: static;
     z-index: 1;
     top: 0;
     left: 0;
@@ -10,7 +11,11 @@
     box-shadow: 1px 1px 3px 1px gray;
     font-size: 20px;
     width : 300px;
-
+    float : left;
+    margin : {
+        top : -25px;
+        right : 50px;
+    }
     .MainMenu {
         height : 100%;
     
