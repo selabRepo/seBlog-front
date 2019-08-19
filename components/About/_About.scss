@@ -1,0 +1,35 @@
+.About{
+    position : relative;
+    flex : 3;
+    margin : {
+        top: 80px;
+        right : 50px;
+    }
+    width: 100%;
+
+    .About-header{
+        margin: {
+            top :-100px;
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            width: 400px;
+            border-bottom: 2px solid #bcbcbc;
+            margin : {
+                bottom : 30px;
+            }
+        }
+
+        h1{
+            font : {
+                size : 60px;
+                weight : bold;
+            }
+        }
+    }   
+    .About-content{
+      
+    }
+}
