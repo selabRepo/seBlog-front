@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../Header'
 import Menu from '../Menu'
+import './_Layout.scss'
 
 const Layout = ({ children }) => {
   return (

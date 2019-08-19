@@ -42,7 +42,7 @@ class ImageSlider extends React.Component {
             '../static/img/bright-clouds-country-440731.jpg',
             '../static/img/daylight-environment-forest-459225.jpg'].map((image,index) => 
                 <div key={index}>
-                    <img src={`${image}`} style={{height: 390}}/>
+                    <img src={`${image}`} style={{height: 300}}/>
                 </div>
             )
         
