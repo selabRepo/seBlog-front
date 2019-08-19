@@ -13,10 +13,10 @@ class Menu extends Component {
             </Link>
           </div>
           <div className="menuList">
-            <Link href="/about">
+            <Link href="/about" activeClassName = "active">
               <a>About</a>
             </Link>
-            <Link href="/blog">
+            <Link href="/blog" activeClassName = "active">
               <a>Blog</a>
             </Link>
             <a href="/">Setting</a>
