@@ -9,7 +9,7 @@ class Menu extends Component {
         <div className="MainMenu">
           <div className="logo">
             <Link href="/">
-              <a className="name">SE Blog</a>
+              <a className="name">SE.LOG</a>
             </Link>
           </div>
           <div className="menuList">
