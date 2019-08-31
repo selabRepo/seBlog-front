@@ -20,6 +20,7 @@ const initialState = {
       createdBy: null,
     },
   ],
+  isOnloadSuccess: false,
 }
 
 export const setCategories = createAction(SET_CATGORIES, getCategories)
@@ -33,6 +34,13 @@ export default handleActions(
         return {
           ...state,
           ...category,
+          isOnloadSuccess: true,
+        }
+      },
+      onFailure: (state, action) => {
+        return {
+          ...state,
+          isOnloadSuccess: false,
         }
       },
     }),
