@@ -37,13 +37,13 @@ class BlogCategory extends Component {
       <div className="NavCategory">
         <ul>
           <li className="category" onClick={this.handleClickCategory(this.ALL)}>
-            <a href="">전체</a>
+            <a href="#">전체</a>
           </li>
           {category &&
             category.length > 1 &&
             category.map(cateElement => (
               <li className="category" onClick={this.handleClickCategory(cateElement.id)}>
-                <a href="">{cateElement.categoryName}</a>
+                <a href="#">{cateElement.categoryName}</a>
               </li>
             ))}
         </ul>
