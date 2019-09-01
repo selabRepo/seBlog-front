@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './_Menu.scss'
-import Link from 'next/Link'
+import Link from 'next/link'
+import { SIDE_BAR_LINK } from '../../constants'
+import PropTypes from 'prop-types'
 
 class Menu extends Component {
   render() {
@@ -13,18 +15,18 @@ class Menu extends Component {
             </Link>
           </div>
           <div className="menuList">
-            <Link href="/about" activeClassName = "active">
-              <a>About</a>
-            </Link>
-            <Link href="/blog" activeClassName = "active">
-              <a>Blog</a>
-            </Link>
-            <a href="/">Setting</a>
+            {SIDE_BAR_LINK.map(menu => (
+              <Link href={`${menu.link}`}>
+                <a aria-selected={menu.name === this.props.selectedTab}>{menu.name}</a>
+              </Link>
+            ))}
           </div>
         </div>
       </nav>
     )
   }
 }
-
+Menu.propTypes = {
+  selectedTab: PropTypes.string,
+}
 export default Menu
