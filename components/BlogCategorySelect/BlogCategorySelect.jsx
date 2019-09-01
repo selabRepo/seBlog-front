@@ -10,7 +10,7 @@ class BlogCategorySelect extends React.Component {
     BlogActions.addBlogCategory(evt.target.value)
   }
 
-  async componentWillMount() {
+  componentDidMount(prevProps, prevState) {
     const { CategoryActions } = this.props
     CategoryActions.setCategories()
   }
