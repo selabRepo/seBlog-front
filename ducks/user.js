@@ -7,7 +7,9 @@ const initialState = {
     userId:null,
     jwtToken:null,
     isLogin: false,
-    isSuccess : false,
+    isLoginSuccess : false,
+    isSignupSuccess : false,
+    message:null,
 }
 
 const USER_SIGNIN = 'user/USER_SIGNIN'
@@ -29,15 +31,25 @@ export default handleActions(
         return {
           ...state,
           ...action.payload.data,
-          isSuccess : true,
+          isLoginSuccess : true,
           isLogin: true,
         }
       },
       onFailure : (state, action) => {
         return {
           ...state,
-          isSuccess : false,
+          isLoginSuccess : false,
           isLogin:false,
+        }
+      }
+    },
+    {
+      type: USER_SIGNUP,
+      onSuccess:(state, action) => {
+        return{
+          ...state,
+          message : action.payload.data,
+          isSignupSuccess : true,
         }
       }
     }),
