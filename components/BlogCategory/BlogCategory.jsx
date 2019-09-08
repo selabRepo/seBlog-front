@@ -42,7 +42,7 @@ class BlogCategory extends Component {
           {category &&
             category.length > 1 &&
             category.map(cateElement => (
-              <li className="category" onClick={this.handleClickCategory(cateElement.id)}>
+              <li className="category" onClick={this.handleClickCategory(cateElement.id)} key={cateElement.id}>
                 <a href="#">{cateElement.categoryName}</a>
               </li>
             ))}

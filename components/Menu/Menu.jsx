@@ -16,7 +16,7 @@ class Menu extends Component {
           </div>
           <div className="menuList">
             {SIDE_BAR_LINK.map(menu => (
-              <Link href={`${menu.link}`}>
+              <Link href={`${menu.link}`} key={menu.name}>
                 <a aria-selected={menu.name === this.props.selectedTab}>{menu.name}</a>
               </Link>
             ))}
