@@ -79,8 +79,8 @@
     
                   &:hover:after { transform: scaleX(1); }
                   
-                .active {
-                    background-color: gold;
+                &[aria-selected="true"] {
+                    // background-color: gold;
                     color:Black ;
                     font-weight:bold;
                 }
