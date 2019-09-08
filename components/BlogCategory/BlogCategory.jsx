@@ -25,7 +25,7 @@ class BlogCategory extends Component {
       BlogListActions.getBlogList({})
       return false
     }
-    this.props.BlogListActions.getBlogListByCategory({ categoryID })
+    BlogListActions.getBlogListByCategory({ categoryID })
     return false
   }
   shouldComponentUpdate(prevProps, prevState) {
@@ -42,7 +42,7 @@ class BlogCategory extends Component {
           {category &&
             category.length > 1 &&
             category.map(cateElement => (
-              <li className="category" onClick={this.handleClickCategory(cateElement.id)}>
+              <li className="category" onClick={this.handleClickCategory(cateElement.id)} key={cateElement.id}>
                 <a href="#">{cateElement.categoryName}</a>
               </li>
             ))}
@@ -53,8 +53,9 @@ class BlogCategory extends Component {
 }
 
 BlogCategory.propTypes = {
-  CategoryActions: PropTypes.func,
-  category: PropTypes.any,
+  CategoryActions: PropTypes.object,
+  BlogListActions: PropTypes.object,
+  category: PropTypes.object,
 }
 
 export default connect(

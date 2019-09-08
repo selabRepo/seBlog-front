@@ -1,12 +1,12 @@
-import Layout from "../../components/Layout";
-import BlogComponent from "../../components/Blog";
+import Layout from '../../components/Layout'
+import BlogComponent from '../../components/Blog'
 
 const Blog = () => {
-    return (
-        <Layout>
-            <BlogComponent/>
-        </Layout>
-    )
+  return (
+    <Layout selectedTab={'Blog'}>
+      <BlogComponent />
+    </Layout>
+  )
 }
 
 export default Blog

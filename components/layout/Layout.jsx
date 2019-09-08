@@ -3,13 +3,12 @@ import Header from '../Header'
 import Menu from '../Menu'
 import './_Layout.scss'
 import ScrollButton from '../ScrollButton'
-import ImageSlider from '../ImageSlider/ImageSlider';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, selectedTab }) => {
   return (
     <div className="App">
       <Header />
-      <Menu />
+      <Menu {...{ selectedTab }} />
       {children}
       <ScrollButton />
     </div>

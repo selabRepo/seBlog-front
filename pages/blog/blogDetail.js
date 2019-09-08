@@ -5,7 +5,7 @@ const BlogDetail = props => {
   const router = useRouter()
   const { blogNo } = router.query
   return (
-    <Layout>
+    <Layout selectedTab={'Blog'}>
       <BlogDetailComponent blogNo={blogNo} />
     </Layout>
   )

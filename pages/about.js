@@ -3,7 +3,7 @@ import AboutComponent from '../components/About'
 
 const About = () => {
   return (
-    <Layout>
+    <Layout selectedTab={'About'}>
       <AboutComponent />
     </Layout>
   )
