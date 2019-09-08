@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { MDBBtn, MDBNotification, MDBContainer } from 'mdbreact'
 import { connect } from 'react-redux'
-import { blogNotifyError } from '../../ducks/event'
+import { blogNotifyError } from '../../../ducks/event'
 import { bindActionCreators } from 'redux'
-import * as blogActions from '../../ducks/blog'
+import * as blogActions from '../../../ducks/blog'
+import './_Header.scss'
 
-class BlogWriteHeader extends Component {
+class Header extends Component {
   handleSave = evt => {
     evt.preventDefault()
     const { categoryID, content, title } = this.props.blog
@@ -37,7 +38,8 @@ class BlogWriteHeader extends Component {
 
   render() {
     return (
-      <div>
+      <div className="blogWriteSection">
+        <h1 className="writeHeader">SE LOG 글 쓰기</h1>
         <MDBBtn color="primary">뒤로가기</MDBBtn>
         <MDBBtn color="primary" style={{ marginLeft: 20 }} onClick={this.handleSave}>
           저장하기
@@ -55,4 +57,4 @@ export default connect(
     blogNotifyError: isError => dispatch(blogNotifyError(isError)),
     BlogActions: bindActionCreators(blogActions, dispatch),
   }),
-)(BlogWriteHeader)
+)(Header)
