@@ -3,9 +3,7 @@ import BlogWrite from '../../components/BlogWrite/BlogWrite'
 
 const Write = () => {
   return (
-    <Layout selectedTab={'Blog'}>
-      <BlogWrite />
-    </Layout>
+    <BlogWrite />
   )
 }
 
