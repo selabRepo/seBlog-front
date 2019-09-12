@@ -1,6 +1,5 @@
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import * as React from 'react'
-import ImageSlider from '../components/ImageSlider/ImageSlider'
 
 class Index extends React.Component {
   render() {

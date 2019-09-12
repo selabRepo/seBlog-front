@@ -3,8 +3,8 @@ import './BlogPane.scss'
 import Editor from 'rich-markdown-editor'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import * as blogActions from '../../ducks/blog'
-import { blogSave } from '../../ducks/event'
+import * as blogActions from '../../../ducks/blog'
+import { blogSave } from '../../../ducks/event'
 import { bindActionCreators } from 'redux'
 
 class BlogPane extends Component {

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as categoryActions from '../../ducks/category'
 import * as blogActions from '../../ducks/blog'
+import './_BlogCategorySelect.scss'
 
 class BlogCategorySelect extends React.Component {
   handleChange = evt => {
@@ -10,7 +11,7 @@ class BlogCategorySelect extends React.Component {
     BlogActions.addBlogCategory(evt.target.value)
   }
 
-  async componentWillMount() {
+  componentDidMount(prevProps, prevState) {
     const { CategoryActions } = this.props
     CategoryActions.setCategories()
   }
@@ -18,9 +19,9 @@ class BlogCategorySelect extends React.Component {
   render() {
     const { category } = this.props
     return (
-      <div className="d-flex justify-content-between" style={{ marginTop: 20, marginBottom: 20 }}>
-        <div className="p-2 col-example text-left">CATEGORY</div>
-        <select className="browser-default custom-select" onChange={this.handleChange}>
+      <div className="categorySelectTemplate">
+        <div className="categoryTitle">CATEGORY</div>
+        <select className="categorySelect" onChange={this.handleChange}>
           <option>카테고리를 선택 해주세요.</option>
           {category &&
             category.map(cate => <option key={`${cate.id}`} value={`${cate.id}`}>{`${cate.categoryName}`}</option>)}

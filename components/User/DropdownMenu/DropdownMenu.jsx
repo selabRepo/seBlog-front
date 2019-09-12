@@ -1,11 +1,11 @@
 import './_DropdownMenu.scss'
+import Link from 'next/link'
 const DropdownMenu = () => {
   return (
     <div className="dropdownContent">
-      {/* <a className="dropdownDetail-home" href="#">
-        홈
-      </a> */}
-      <a className="dropdownDetail">글 쓰기</a>
+      <Link href={'/blog/write'}>
+        <a className="dropdownDetail">글 쓰기</a>
+      </Link>
       <a className="dropdownDetail">정보 수정</a>
       <a className="dropdownDetail-logOut">로그 아웃</a>
     </div>

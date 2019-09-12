@@ -1,12 +1,10 @@
-import Layout from "../../components/Layout";
-import BlogWrite from "../../components/BlogWrite/BlogWrite";
+import Layout from '../../components/Layout'
+import BlogWrite from '../../components/BlogWrite/BlogWrite'
 
 const Write = () => {
-    return (
-        <Layout>
-            <BlogWrite/>
-        </Layout>
-    )
+  return (
+    <BlogWrite />
+  )
 }
 
 export default Write
