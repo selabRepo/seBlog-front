@@ -16,7 +16,6 @@ class BlogPane extends Component {
       title: null,
     }
     this.content = null
-    this.title = null
   }
 
   handleUpdateContent = value => {
@@ -32,30 +31,14 @@ class BlogPane extends Component {
     return `/${resultUrl.data.replace('uploadImageFile', 'upload')}`
   }
 
-  handleTitleChange = evt => {
-    this.title = evt.target.value
-  }
-
   handleBlurBlogContent = () => {
     const { BlogActions } = this.props
     BlogActions.addBlogContent(this.content)
   }
 
-  handleBlurBlogTitle = () => {
-    const { BlogActions } = this.props
-    BlogActions.addBlogTitle(this.title)
-  }
-
   render() {
     return (
       <div className="editor-pane">
-        <input
-          className="title"
-          placeholder="제목 입력"
-          name="title"
-          onChange={this.handleTitleChange}
-          onBlur={this.handleBlurBlogTitle}
-        />
         <Editor
           id={'markdownEditor'}
           onChange={this.handleUpdateContent}

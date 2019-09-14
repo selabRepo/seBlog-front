@@ -7,6 +7,10 @@ import * as blogActions from '../../../ducks/blog'
 import './_Header.scss'
 
 class Header extends Component {
+  constructor(props) {
+    super(props)
+    this.title = null
+  }
   handleSave = evt => {
     evt.preventDefault()
     const { categoryID, content, title } = this.props.blog
@@ -26,6 +30,15 @@ class Header extends Component {
     }
   }
 
+  handleTitleChange = evt => {
+    this.title = evt.target.value
+  }
+
+  handleBlurBlogTitle = () => {
+    const { BlogActions } = this.props
+    BlogActions.addBlogTitle(this.title)
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { BlogActions, blog } = this.props
     const { isSuccess } = blog
@@ -39,11 +52,15 @@ class Header extends Component {
   render() {
     return (
       <div className="blogWriteSection">
-        <h1 className="writeHeader">SE LOG 글 쓰기</h1>
-        <MDBBtn color="primary">뒤로가기</MDBBtn>
-        <MDBBtn color="primary" style={{ marginLeft: 20 }} onClick={this.handleSave}>
-          저장하기
-        </MDBBtn>
+        <div className="titleArea">
+          <input placeholder="제목 입력해주세요." onChange={this.handleTitleChange} onBlur={this.handleBlurBlogTitle} />
+        </div>
+        <div className="actions">
+          <button className="backButton">뒤로가기</button>
+          <button className="saveButton" style={{ marginLeft: 20 }} onClick={this.handleSave}>
+            저장하기
+          </button>
+        </div>
       </div>
     )
   }
