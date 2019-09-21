@@ -39,6 +39,11 @@ class Header extends Component {
     BlogActions.addBlogTitle(this.title)
   }
 
+  handleClickBackButton = evt => {
+    history.back()
+    return false
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { BlogActions, blog } = this.props
     const { isSuccess } = blog
@@ -49,6 +54,11 @@ class Header extends Component {
     }
   }
 
+  componentWillUnmount() {
+    BlogActions.initState()
+    this.title = null
+  }
+
   render() {
     return (
       <div className="blogWriteSection">
@@ -56,7 +66,9 @@ class Header extends Component {
           <input placeholder="제목 입력해주세요." onChange={this.handleTitleChange} onBlur={this.handleBlurBlogTitle} />
         </div>
         <div className="actions">
-          <button className="backButton">뒤로가기</button>
+          <button className="backButton" onClick={this.handleClickBackButton}>
+            뒤로가기
+          </button>
           <button className="saveButton" style={{ marginLeft: 20 }} onClick={this.handleSave}>
             저장하기
           </button>
