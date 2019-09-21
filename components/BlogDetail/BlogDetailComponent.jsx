@@ -9,7 +9,7 @@ import BlogDetailTitle from '../BlogDetailTitle'
 import './_BlogDetail.scss'
 class BlogDetail extends Component {
   async componentDidMount() {
-    const { BlogActions, blog } = this.props
+    const { BlogActions } = this.props
     await BlogActions.getBlogDetail(this.props.blogNo)
     // BlogActions.updateBlogDetail(this.)
   }
@@ -25,10 +25,10 @@ class BlogDetail extends Component {
   }
   render() {
     const { blog } = this.props
-    const { title, id, updatedDate, hits } = blog
+    const { title, id, createdDate, hits } = blog
     return (
       <div className="contents">
-        <BlogDetailTitle {...{ title, id, hits }} date={updatedDate} />
+        <BlogDetailTitle {...{ title, id, hits }} date={createdDate} />
         {blog && blog.content && <ReactMarkDown source={blog.content} renderers={{ code: BlogCodeBlock }} />}
       </div>
     )
