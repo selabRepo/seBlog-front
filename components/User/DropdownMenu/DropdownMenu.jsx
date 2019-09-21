@@ -3,7 +3,7 @@ import Link from 'next/link'
 const DropdownMenu = () => {
   return (
     <div className="dropdownContent">
-      <Link href={'/blog/write'}>
+      <Link href={'/write'}>
         <a className="dropdownDetail">글 쓰기</a>
       </Link>
       <a className="dropdownDetail">정보 수정</a>
