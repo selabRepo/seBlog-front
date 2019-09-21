@@ -1,11 +1,7 @@
-import LoginComponent from '../components/Login';
+import LoginComponent from '../components/Login'
 
 const Login = () => {
-    return (
-        <LoginComponent>
-
-        </LoginComponent>
-    )
+  return <LoginComponent />
 }
 
-export default Login;
+export default Login
