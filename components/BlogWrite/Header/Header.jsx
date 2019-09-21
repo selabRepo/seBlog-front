@@ -55,6 +55,7 @@ class Header extends Component {
   }
 
   componentWillUnmount() {
+    const { BlogActions } = this.props
     BlogActions.initState()
     this.title = null
   }
