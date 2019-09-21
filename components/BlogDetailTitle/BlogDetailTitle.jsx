@@ -1,9 +1,18 @@
 import './BlogDetailTitle.scss'
-const blogDetailImage = ({ image }) => {
+const blogDetailTitle = ({ title, category, date, hits }) => {
   return (
-    <div class="blogTitle" aria-label="블로그 title" style={{ backgroundImage: image }}>
-      <h1>안녕하세요</h1>
+    <div className="blogHeader">
+      <h2 className="blogTitle" aria-label="블로그 title">
+        {title}
+      </h2>
+      <div className="details">
+        <a className="category">{category}</a>
+        <span className="divider">·</span>
+        <span className="date">{date}</span>
+        <span className="divider">·</span>
+        <span className="hits"> 조회수 {hits}</span>
+      </div>
     </div>
   )
 }
-export default blogDetailImage
+export default blogDetailTitle

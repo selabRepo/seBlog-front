@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux'
 import * as categoryActions from '../../ducks/category'
 import * as blogActions from '../../ducks/blog'
 import './_BlogCategorySelect.scss'
+import { Select } from 'antd'
+import 'antd/dist/antd.css'
 
 class BlogCategorySelect extends React.Component {
   handleChange = evt => {
@@ -17,15 +19,21 @@ class BlogCategorySelect extends React.Component {
   }
 
   render() {
+    const { Option } = Select
     const { category } = this.props
     return (
       <div className="categorySelectTemplate">
         <div className="categoryTitle">CATEGORY</div>
-        <select className="categorySelect" onChange={this.handleChange}>
-          <option>카테고리를 선택 해주세요.</option>
-          {category &&
-            category.map(cate => <option key={`${cate.id}`} value={`${cate.id}`}>{`${cate.categoryName}`}</option>)}
-        </select>
+        <div className="categorySelect">
+          <Select
+            defaultValue="카테고리를 선택해주세요."
+            style={{ width: 180, marginLeft: '2em' }}
+            onChange={this.handleChange}
+          >
+            {category &&
+              category.map(cate => <Option key={`${cate.id}`} value={`${cate.id}`}>{`${cate.categoryName}`}</Option>)}
+          </Select>
+        </div>
       </div>
     )
   }

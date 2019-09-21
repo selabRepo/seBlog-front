@@ -5,21 +5,32 @@ import { bindActionCreators } from 'redux'
 import * as blogAction from '../../ducks/blog'
 import PropTypes from 'prop-types'
 import BlogCodeBlock from './BlogCodeBlock'
-import { Container } from '@material-ui/core'
 import BlogDetailTitle from '../BlogDetailTitle'
+import './_BlogDetail.scss'
 class BlogDetail extends Component {
-  componentDidMount(prevProps, prevState) {
-    this.props.BlogAction.getBlogDetail(this.props.blogNo)
+  async componentDidMount() {
+    const { BlogActions } = this.props
+    await BlogActions.getBlogDetail(this.props.blogNo)
+    // BlogActions.updateBlogDetail(this.)
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { BlogActions, blog } = this.props
+
+    if (prevProps.blog !== blog && blog.id !== prevProps.blog.id) {
+      const updateBlogDetail = { ...blog }
+      updateBlogDetail.hits += 1
+      BlogActions.updateBlogDetail(updateBlogDetail)
+    }
   }
   render() {
     const { blog } = this.props
+    const { title, id, createdDate, hits } = blog
     return (
-      <>
-        <BlogDetailTitle image={'/upload/1111.png'} />
-        <Container>
-          {blog && blog.content && <ReactMarkDown source={blog.content} renderers={{ code: BlogCodeBlock }} />}
-        </Container>
-      </>
+      <div className="contents">
+        <BlogDetailTitle {...{ title, id, hits }} date={createdDate} />
+        {blog && blog.content && <ReactMarkDown source={blog.content} renderers={{ code: BlogCodeBlock }} />}
+      </div>
     )
   }
 }
@@ -31,6 +42,6 @@ export default connect(
     blog: state.blog,
   }),
   dispatch => ({
-    BlogAction: bindActionCreators(blogAction, dispatch),
+    BlogActions: bindActionCreators(blogAction, dispatch),
   }),
 )(BlogDetail)
