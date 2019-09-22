@@ -6,8 +6,12 @@ import * as blogActions from '../../ducks/blog'
 import './_BlogCategorySelect.scss'
 import { Select } from 'antd'
 import 'antd/dist/antd.css'
+import BlogThumbnail from './BlogThumbnail'
 
 class BlogCategorySelect extends React.Component {
+  constructor(props) {
+    super(props)
+  }
   handleChange = evt => {
     const { BlogActions } = this.props
     BlogActions.addBlogCategory(evt.target.value)
@@ -34,6 +38,8 @@ class BlogCategorySelect extends React.Component {
               category.map(cate => <Option key={`${cate.id}`} value={`${cate.id}`}>{`${cate.categoryName}`}</Option>)}
           </Select>
         </div>
+
+        <BlogThumbnail />
       </div>
     )
   }
