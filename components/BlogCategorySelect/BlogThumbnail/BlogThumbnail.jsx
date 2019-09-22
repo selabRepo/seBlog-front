@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Upload, Icon, message } from 'antd'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as blogActions from '../../../ducks/blog'
 
 class BlogThumbnail extends Component {
   constructor(props) {
@@ -25,11 +28,13 @@ class BlogThumbnail extends Component {
 
   handleChangeDragger = info => {
     const { status } = info.file
+    const { BlogActions } = this.props
     if (status !== 'uploading') {
       console.log(info.file, info.fileList)
     }
     if (status === 'done') {
       message.success(`${info.file.name} file uploaded successfully.`)
+      BlogActions.addBlogThumbnail(info.file.response)
       this.changeTimeoutVisible(400, false)
     } else if (status === 'error') {
       message.error(`${info.file.name} file upload failed.`)
@@ -69,6 +74,13 @@ class BlogThumbnail extends Component {
   }
 }
 
-BlogThumbnail.propTypes = {}
+BlogThumbnail.propTypes = {
+  BlogActions: PropTypes.object,
+}
 
-export default BlogThumbnail
+export default connect(
+  state => ({}),
+  dispatch => ({
+    BlogActions: bindActionCreators(blogActions, dispatch),
+  }),
+)(BlogThumbnail)
