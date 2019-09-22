@@ -51,6 +51,12 @@ export default handleActions(
           message : action.payload.data,
           isSignupSuccess : true,
         }
+      },onFailure : (state, action) => {
+        return {
+          ...state,
+          message : action.payload.data,
+          isSignupSuccess : false,
+        }
       }
     }),
   },

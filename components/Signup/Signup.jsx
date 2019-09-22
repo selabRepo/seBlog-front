@@ -14,8 +14,17 @@ class Signup extends Component {
     super();
     this.email = null;
     this.password = null;
+    this.passwordCheck = null;
     this.studentNumber = null;
     this.name = null;
+
+    this.isMatchPassword = false;
+
+    this.inputEmail = React.createRef();
+    this.inputPassword = React.createRef();
+    this.inputPasswordCheck = React.createRef();
+    this.inputStudentNumber = React.createRef();
+    this.inputName = React.createRef();
   }
 
   handleUserIdChange = (e) => {
@@ -30,17 +39,58 @@ class Signup extends Component {
     this.password = e.target.value;
   }
 
+  handlePasswordCheckChange = (e) => {
+    this.passwordCheck = e.target.value;
+  }
+
   handleStudentNumberChange = (e) => {
     this.studentNumber = e.target.value
   }
 
+  checkPassword = (input1, input2) => {
+    this.isMatchPassword = (input1===input2);
+  }
+
   handleSignup = () => {
+    
+    if(this.inputEmail.current.value==''){
+      alert("Please, Input your Email(ID).");
+      return;
+    }
+
+    if(this.inputPassword.current.value == ''){
+      alert("Please, Input your password.");
+      return;
+    }
+
+    if(this.inputPasswordCheck.current.value == ''){
+      alert("Please, Input your password Check.");
+      return;
+    }
+    
+    if(this.inputName.current.value == ''){
+      alert("Please, Input your name.");
+      return;
+    }
+
+    if(this.inputStudentNumber.current.value == ''){
+      alert("Please, Input your student Number.");
+      return;
+    }
+
+    if(this.isMatchPassword === false){
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
     this.props.UserActions.userSignup({email:this.email, password : this.password, studentNumber : this.studentNumber, name: this.name, roles : [{role: "ROLE_USER"}]})
   }
   
   componentDidUpdate(prevProps, prevState){
     if(this.props.user.isSignupSuccess===true){
       location.href="/login"
+    }else{
+      alert("Signup Failure.");
     }
   }
   
@@ -63,6 +113,7 @@ class Signup extends Component {
               autoComplete="email"
               autoFocus
               onChange={this.handleUserIdChange}
+              inputRef = {this.inputEmail}
             />
             <TextField
               variant="outlined"
@@ -74,6 +125,7 @@ class Signup extends Component {
               type="password"
               id="password"
               onChange={this.handlePasswordChange}
+              inputRef = {this.inputPassword}
             />
 
             <TextField
@@ -85,6 +137,8 @@ class Signup extends Component {
               label="Password check"
               type="password"
               id="passwordCheck"
+              inputRef = {this.inputPasswordCheck}
+              onChange = {this.handlePasswordCheckChange}
             />
 
             <TextField
@@ -97,6 +151,7 @@ class Signup extends Component {
               type="name"
               id="name"
               onChange={this.handleNameChange}
+              inputRef = {this.inputName}
             />
             
             <TextField
@@ -112,6 +167,7 @@ class Signup extends Component {
                 e.target.value = (e.target.value).toString().slice(0, 2)
               }}
               onChange={this.handleStudentNumberChange}
+              inputRef = {this.inputStudentNumber}
             />
 
             <Button fullWidth variant="contained" color="primary" className="submit" onClick={this.handleSignup}>
