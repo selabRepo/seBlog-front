@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import * as blogListAction from '../../ducks/blogList'
 import { bindActionCreators } from 'redux'
 import InfiniteScroll from 'react-infinite-scroller';
+import './BlogList.scss';
+
 
 class BlogList extends Component {
   componentDidMount(prevProps, prevState) {
@@ -18,13 +20,13 @@ class BlogList extends Component {
   render() {
     const { content } = this.props.blogList
     return (
-      <div className="my-5 px-5 pb-5" style={{ flex: 3 }}>
-        <div>
-          <h2 className="h1-responsive font-weight-bold text-center my-5">블로그 포스팅</h2>
-          <p className="text-center w-responsive mx-auto mb-5">SE 기술 블로그 내용</p>
-
-          {content && content.map((contents, index) => <BlogOverview key={index} contents={contents} />)}
+      <div className="BlogList">
+        <div className = "BlogList-header">
+          블로그 포스팅
         </div>
+        <div className = "BlogList-contents">          
+          {content && content.map((contents, index) => <BlogOverview key={index} contents={contents} />)}
+        </div> 
       </div>
     )
   }

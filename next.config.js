@@ -10,7 +10,7 @@ module.exports = withCSS(
           options: {
             limit: 100000,
           },
-        },
+        }
       })
 
       return config
