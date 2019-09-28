@@ -29,9 +29,7 @@ class BlogList extends React.Component {
     }
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.props.blogList.categoryID !== prevProps.blogList.categoryID)
     if (this.props.blogList.categoryID !== prevProps.blogList.categoryID) {
-      console.log('here')
       this.page = 0
     }
   }

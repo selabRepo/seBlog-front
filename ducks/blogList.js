@@ -27,7 +27,6 @@ export const getBlogList = createAction(GET_BLOG_LIST, blogParams => {
 })
 
 export const getBlogListByCategory = createAction(GET_BLOG_LIST_BY_CAETGORY, blogParams => {
-  console.log(blogParams)
   return axios.get(`/api/categories/${blogParams.categoryID}/blogs`, {
     params: {
       sort: 'id,desc',
