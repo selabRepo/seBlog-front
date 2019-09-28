@@ -14,7 +14,8 @@ class BlogList extends React.Component {
   }
   handleLoadMore = page => {
     const { BlogListAction, blogList } = this.props
-    const { categoryID } = blogList
+    const { categoryID } = blogList.categoryID
+
     this.page += 1
     if (categoryID !== -1) {
       BlogListAction.getBlogListByCategory({ categoryID, page: this.page, size: BLOG_PAGING.SIZE })

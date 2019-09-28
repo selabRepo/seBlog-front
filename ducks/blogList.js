@@ -8,7 +8,9 @@ const initialState = {
   totalPages: 0,
   totalElements: 0,
   isMoreData: false,
-  categoryID: 0,
+  categoryID: {
+    categoryID: -1,
+  },
 }
 
 const GET_BLOG_LIST = 'blogList/GET_BLOG_LIST'
