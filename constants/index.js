@@ -12,3 +12,8 @@ export const SIDE_BAR_LINK = [
     link: '/',
   },
 ]
+
+export const BLOG_PAGING = {
+  PAGE: 0,
+  SIZE: 3,
+}
