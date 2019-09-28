@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import * as categoryActions from '../../ducks/category'
 import * as blogListActions from '../../ducks/blogList'
 import { connect } from 'react-redux'
+import { BLOG_PAGING } from '../../constants'
 class BlogCategory extends Component {
   ALL = -1
   componentDidMount(prevProps, prevState) {
@@ -21,11 +22,13 @@ class BlogCategory extends Component {
 
   handleClickCategory = categoryID => evt => {
     const { BlogListActions } = this.props
+
+    BlogListActions.setBlogCategory({ categoryID })
     if (categoryID === this.ALL) {
-      BlogListActions.getBlogList({})
+      BlogListActions.getBlogList({ page: 0, size: BLOG_PAGING.SIZE })
       return false
     }
-    BlogListActions.getBlogListByCategory({ categoryID })
+    BlogListActions.getBlogListByCategory({ categoryID, page: BLOG_PAGING.PAGE, size: BLOG_PAGING.SIZE })
     return false
   }
   shouldComponentUpdate(prevProps, prevState) {

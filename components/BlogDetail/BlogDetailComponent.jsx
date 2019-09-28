@@ -8,9 +8,9 @@ import BlogCodeBlock from './BlogCodeBlock'
 import BlogDetailTitle from '../BlogDetailTitle'
 import './_BlogDetail.scss'
 class BlogDetail extends Component {
-  async componentDidMount() {
+  componentDidMount() {
     const { BlogActions } = this.props
-    await BlogActions.getBlogDetail(this.props.blogNo)
+    BlogActions.getBlogDetail(this.props.blogNo)
     // BlogActions.updateBlogDetail(this.)
   }
 
