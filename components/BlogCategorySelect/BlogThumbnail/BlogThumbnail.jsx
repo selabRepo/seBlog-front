@@ -30,7 +30,6 @@ class BlogThumbnail extends Component {
     const { status } = info.file
     const { BlogActions } = this.props
     if (status !== 'uploading') {
-      console.log(info.file, info.fileList)
     }
     if (status === 'done') {
       message.success(`${info.file.name} file uploaded successfully.`)

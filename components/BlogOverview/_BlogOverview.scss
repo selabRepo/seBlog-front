@@ -1,0 +1,33 @@
+.blogOverview {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 10px;
+  margin-bottom: 24px;
+  border-radius: 5px;
+  padding: 23px 0px;
+  transition: width 2s;
+  cursor: pointer;
+  .blogSection {
+    width: 90%;
+    height: 100%;
+    margin-left: 3.5em;
+    .profile {
+      display: flex;
+      align-items: center;
+      .userImage {
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+      .userName {
+        margin-left: 1.5em;
+        .name {
+          margin-bottom: 0.3em;
+        }
+        .date {
+          margin-top: 0em;
+        }
+      }
+    }
+  }
+}
