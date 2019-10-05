@@ -49,11 +49,6 @@ class BlogList extends React.Component {
           pageStart={0}
           loadMore={this.handleLoadMore}
           hasMore={isMoreData}
-          loader={
-            <div className="loader" key={0}>
-              Loading ...
-            </div>
-          }
           initialLoad={false}
           className={'infinite'}
         >
