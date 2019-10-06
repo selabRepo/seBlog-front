@@ -43,8 +43,9 @@ class BlogList extends React.Component {
     const { content, isMoreData } = this.props.blogList
     return (
       <div className="blogList" style={{ flex: 3 }}>
-        <h2 className="title">블로그 포스팅</h2>
-        <p className="techBlog">SE 기술 블로그 내용</p>
+        <div className = "blogList-title">
+          <h1 className="title">현재 등록되어 있는 게시글</h1>
+        </div>
         <InfiniteScroll
           pageStart={0}
           loadMore={this.handleLoadMore}
