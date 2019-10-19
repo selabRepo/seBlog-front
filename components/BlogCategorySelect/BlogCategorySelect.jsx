@@ -12,9 +12,9 @@ class BlogCategorySelect extends React.Component {
   constructor(props) {
     super(props)
   }
-  handleChange = evt => {
+  handleChange = value => {
     const { BlogActions } = this.props
-    BlogActions.addBlogCategory(evt.target.value)
+    BlogActions.addBlogCategory(value)
   }
 
   componentDidMount(prevProps, prevState) {

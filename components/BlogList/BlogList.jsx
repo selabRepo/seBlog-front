@@ -45,15 +45,17 @@ class BlogList extends React.Component {
       <div className="blogList" style={{ flex: 3 }}>
         <h2 className="title">블로그 포스팅</h2>
         <p className="techBlog">SE 기술 블로그 내용</p>
-        <InfiniteScroll
-          pageStart={0}
-          loadMore={this.handleLoadMore}
-          hasMore={isMoreData}
-          initialLoad={false}
-          className={'infinite'}
-        >
-          {content && content.map((contents, index) => <BlogOverview key={index} contents={contents} />)}
-        </InfiniteScroll>
+        {(content && content.length > 0 && (
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={this.handleLoadMore}
+            hasMore={isMoreData}
+            initialLoad={false}
+            className={'infinite'}
+          >
+            {content && content.map((contents, index) => <BlogOverview key={index} contents={contents} />)}
+          </InfiniteScroll>
+        )) || <div className="empty">해당되는 내용이 없습니다.</div>}
       </div>
     )
   }
