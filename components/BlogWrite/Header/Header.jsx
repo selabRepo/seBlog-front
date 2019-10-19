@@ -16,7 +16,7 @@ class Header extends Component {
 
   handleSave = evt => {
     evt.preventDefault()
-    const { categoryID, content, title } = this.props.blog
+    const { categoryID, content, title, thumbnail } = this.props.blog
     if (!categoryID || !content || !title) {
       this.props.blogNotifyError(true)
       return
@@ -29,6 +29,7 @@ class Header extends Component {
         content,
         title,
         createdBy: 'jyb',
+        thumbnail,
       })
     }
   }

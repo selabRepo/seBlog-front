@@ -11,6 +11,10 @@ export const SIDE_BAR_LINK = [
     name: 'Settings',
     link: '/',
   },
+  {
+    name: 'Writer',
+    link: '/writer',
+  },
 ]
 
 export const BLOG_PAGING = {
