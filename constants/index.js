@@ -21,3 +21,5 @@ export const BLOG_PAGING = {
   PAGE: 0,
   SIZE: 3,
 }
+
+export const SERVER = 'http://localhost:3000'

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import './_BlogOverview.scss'
+import { SERVER } from '../../constants'
 
 const BlogOverview = ({ contents }) => {
   return (
@@ -17,7 +18,7 @@ const BlogOverview = ({ contents }) => {
               <p className="date">{contents.createdDate}</p>
             </div>
           </div>
-          <img className="img-fluid" src="http://localhost:3000/upload/1111.png" width="100%" alt="" />
+          <img className="img-fluid" src={`${SERVER}/upload/1111.png`} width="100%" alt="" />
           <h3 className="font-weight-bold mb-3 p-0">
             <strong>{contents.title}</strong>
           </h3>

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { createAction, handleActions } from 'redux-actions'
 import { pender } from 'redux-pender'
+import { SERVER } from '../constants'
 
 const ADD_BLOG_CONTENT = 'blog/ADD_BLOG_CONTENT'
 const ADD_BLOG_CATEGORY = 'blog/ADD_BLOG_CATEGORY'
@@ -44,13 +45,13 @@ export const addBlogThumbnail = createAction(ADD_BLOG_THUMBNAIL, thumbnail => {
   }
 })
 export const postBlog = createAction(POST_BLOG, blog => {
-  return axios.post('/api/blogs', blog)
+  return axios.post(`${SERVER}/api/blogs`, blog)
 })
 export const getBlogDetail = createAction(GET_BLOG_DETAIL, blogNo => {
-  return axios.get(`/api/blogs/${blogNo}`)
+  return axios.get(`${SERVER}/api/blogs/${blogNo}`)
 })
 export const updateBlogDetail = createAction(UPDATE_BLOG_DETAIL, blog => {
-  return axios.put(`/api/blogs/${blog.id}`, blog)
+  return axios.put(`${SERVER}/api/blogs/${blog.id}`, blog)
 })
 export const initState = createAction(INIT_STATE)
 
