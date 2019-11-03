@@ -15,9 +15,22 @@ class Login extends Component {
     super()
     this.userID = null
     this.userPassword = null
+    this.inputID = React.createRef()
+    this.inputPassword = React.createRef()
   }
+
   handleLogin = () => {
-    this.props.UserActions.userSignup({ userName: this.userID, password: this.userPassword })
+    if (this.inputID.current.value === '') {
+      alert('Please, Enter your login ID')
+      return
+    }
+
+    if (this.inputPassword.current.value === '') {
+      alert('Please, Enter your password.')
+      return
+    }
+
+    this.props.UserActions.userSignin({ userName: this.userID, password: this.userPassword })
   }
 
   handleUserIdChange = e => {
@@ -26,6 +39,16 @@ class Login extends Component {
 
   handleUserPasswordChange = e => {
     this.userPassword = e.target.value
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.user.isSuccess === false) {
+      alert('Login Failure.')
+    }
+
+    if (this.props.user.isLogin === true) {
+      location.href = '/'
+    }
   }
 
   render() {
@@ -45,6 +68,7 @@ class Login extends Component {
               label="Email Address"
               name="email"
               autoComplete="email"
+              inputRef={this.inputID}
               autoFocus
               onChange={this.handleUserIdChange}
             />
@@ -58,6 +82,7 @@ class Login extends Component {
               type="password"
               id="password"
               autoComplete="current-password"
+              inputRef={this.inputPassword}
               onChange={this.handleUserPasswordChange}
             />
             <Button fullWidth variant="contained" color="primary" className="submit" onClick={this.handleLogin}>
@@ -70,7 +95,7 @@ class Login extends Component {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {'Sign up'}
                 </Link>
               </Grid>
@@ -83,7 +108,9 @@ class Login extends Component {
 }
 
 export default connect(
-  state => ({}),
+  state => ({
+    user: state.user,
+  }),
   dispatch => ({
     UserActions: bindActionCreators(userActions, dispatch),
   }),

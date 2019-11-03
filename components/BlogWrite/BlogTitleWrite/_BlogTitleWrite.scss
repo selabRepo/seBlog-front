@@ -1,4 +1,4 @@
-.categorySelectTemplate {
+.titleArea {
   position: relative;
   z-index: 15;
   height: 4rem;
@@ -10,11 +10,17 @@
   -ms-flex-align: center;
   align-items: center;
   color: #fff;
-  flex: 1;
-  .thumbnailPicture {
-    width: 2em;
-    background: white;
-    margin-left: 3em;
-    cursor: pointer;
+  -ms-flex: 1 1;
+  flex: 1 1;
+  display: -ms-flexbox;
+  display: flex;
+  input {
+    flex: 1 1;
+    background: none;
+    outline: 0;
+    border: none;
+    font-size: 1.25rem;
+    color: #fff;
+    margin-left: 1rem;
   }
 }

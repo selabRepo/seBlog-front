@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { createAction, handleActions } from 'redux-actions'
 import { pender } from 'redux-pender'
+import { SERVER } from '../constants'
 
 const SET_CATGORIES = 'category/SET_CETAGORIES'
 const getCategories = () => {
-  return axios.get('/api/categories')
+  return axios.get(`${SERVER}/api/categories`)
 }
 
 const initialState = {

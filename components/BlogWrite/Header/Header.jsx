@@ -5,15 +5,18 @@ import { blogNotifyError } from '../../../ducks/event'
 import { bindActionCreators } from 'redux'
 import * as blogActions from '../../../ducks/blog'
 import './_Header.scss'
+import BlogCategorySelect from '../../BlogCategorySelect'
+import BlogTitleWrite from '../BlogTitleWrite'
 
 class Header extends Component {
   constructor(props) {
     super(props)
     this.title = null
   }
+
   handleSave = evt => {
     evt.preventDefault()
-    const { categoryID, content, title } = this.props.blog
+    const { categoryID, content, title, thumbnail } = this.props.blog
     if (!categoryID || !content || !title) {
       this.props.blogNotifyError(true)
       return
@@ -26,6 +29,7 @@ class Header extends Component {
         content,
         title,
         createdBy: 'jyb',
+        thumbnail,
       })
     }
   }
@@ -62,19 +66,20 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="blogWriteSection">
-        <div className="titleArea">
-          <input placeholder="제목 입력해주세요." onChange={this.handleTitleChange} onBlur={this.handleBlurBlogTitle} />
+      <>
+        <div className="blogWriteSection">
+          <BlogCategorySelect />
+          <div className="actions">
+            <button className="backButton" onClick={this.handleClickBackButton}>
+              뒤로가기
+            </button>
+            <button className="saveButton" style={{ marginLeft: 20 }} onClick={this.handleSave}>
+              저장하기
+            </button>
+          </div>
         </div>
-        <div className="actions">
-          <button className="backButton" onClick={this.handleClickBackButton}>
-            뒤로가기
-          </button>
-          <button className="saveButton" style={{ marginLeft: 20 }} onClick={this.handleSave}>
-            저장하기
-          </button>
-        </div>
-      </div>
+        <BlogTitleWrite onBlurBlogTitle={this.handleBlurBlogTitle} onTitleChange={this.handleTitleChange} />
+      </>
     )
   }
 }
