@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import './_BlogOverview.scss'
+import { SERVER } from '../../constants'
 
 const BlogOverview = ({ contents }) => {
 
@@ -25,17 +26,11 @@ const BlogOverview = ({ contents }) => {
               </div>
             </div>
           </div>
+          <img className="img-fluid" src={`${SERVER}/upload/1111.png`} width="100%" alt="" />
+          <h3 className="font-weight-bold mb-3 p-0">
+            <strong>{contents.title}</strong>
+          </h3>
 
-          <div className = "blogOverview-list-postView">
-            <Link as={`/blog/${contents.id}`} href={`/blog/blogDetail?blogNo=${contents.id}`}>
-              <img className="img-fluid" src="http://localhost:3000/upload/1111.png" width="100%" alt="" />
-            </Link>
-          </div>
-          <div className = "blogOverview-list-bottom">
-            <h2>
-              {contents.title}
-            </h2>
-          </div>
         </div>
       </div>
     </Link>

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { createAction, handleActions } from 'redux-actions'
 import { pender } from 'redux-pender'
+import { SERVER } from '../constants'
 
 const initialState = {
   content: [],
@@ -18,7 +19,7 @@ const GET_BLOG_LIST_BY_CAETGORY = 'blogList/GET_BLOG_LIST_BY_CAETGORY'
 const SET_BLOG_CATEGORY = 'blogList/SET_BLOG_CATEGORY'
 
 export const getBlogList = createAction(GET_BLOG_LIST, blogParams => {
-  return axios.get('/api/blogs', {
+  return axios.get(`${SERVER}/api/blogs`, {
     params: {
       sort: 'id,desc',
       ...blogParams,
@@ -27,7 +28,7 @@ export const getBlogList = createAction(GET_BLOG_LIST, blogParams => {
 })
 
 export const getBlogListByCategory = createAction(GET_BLOG_LIST_BY_CAETGORY, blogParams => {
-  return axios.get(`/api/categories/${blogParams.categoryID}/blogs`, {
+  return axios.get(`${SERVER}/api/categories/${blogParams.categoryID}/blogs`, {
     params: {
       sort: 'id,desc',
       ...blogParams,

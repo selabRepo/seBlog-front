@@ -7,11 +7,11 @@ import PropTypes from 'prop-types'
 import BlogCodeBlock from './BlogCodeBlock'
 import BlogDetailTitle from '../BlogDetailTitle'
 import './_BlogDetail.scss'
+import breaks from 'remark-breaks'
 class BlogDetail extends Component {
   componentDidMount() {
     const { BlogActions } = this.props
     BlogActions.getBlogDetail(this.props.blogNo)
-    // BlogActions.updateBlogDetail(this.)
   }
 
   componentDidUpdate(prevProps, prevState) {

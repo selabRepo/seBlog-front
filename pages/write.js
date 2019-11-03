@@ -1,5 +1,4 @@
 import BlogWrite from '../components/BlogWrite/BlogWrite'
-
 const Write = () => {
   return <BlogWrite />
 }

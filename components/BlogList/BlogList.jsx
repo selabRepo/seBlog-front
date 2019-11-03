@@ -43,23 +43,20 @@ class BlogList extends React.Component {
     const { content, isMoreData } = this.props.blogList
     return (
       <div className="blogList" style={{ flex: 3 }}>
-        <div className = "blogList-title">
-          <h1 className="title">현재 등록되어 있는 게시글</h1>
-        </div>
-        <InfiniteScroll
-          pageStart={0}
-          loadMore={this.handleLoadMore}
-          hasMore={isMoreData}
-          loader={
-            <div className="loader" key={0}>
-              Loading ...
-            </div>
-          }
-          initialLoad={false}
-          className={'infinite'}
-        >
-          {content && content.map((contents, index) => <BlogOverview key={index} contents={contents} />)}
-        </InfiniteScroll>
+        <h2 className="title">블로그 포스팅</h2>
+        <p className="techBlog">SE 기술 블로그 내용</p>
+        {(content && content.length > 0 && (
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={this.handleLoadMore}
+            hasMore={isMoreData}
+            initialLoad={false}
+            className={'infinite'}
+          >
+            {content && content.map((contents, index) => <BlogOverview key={index} contents={contents} />)}
+          </InfiniteScroll>
+        )) || <div className="empty">해당되는 내용이 없습니다.</div>}
+
       </div>
     )
   }
