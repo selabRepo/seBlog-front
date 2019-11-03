@@ -56,6 +56,7 @@ class BlogList extends React.Component {
             {content && content.map((contents, index) => <BlogOverview key={index} contents={contents} />)}
           </InfiniteScroll>
         )) || <div className="empty">해당되는 내용이 없습니다.</div>}
+
       </div>
     )
   }
