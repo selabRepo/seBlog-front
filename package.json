@@ -54,7 +54,7 @@
     "slate-edit-table": "^0.18.0",
     "styled-components": "^4.2.0",
     "webpack": "^4.31.0",
-    "yarn": "^1.17.3"
+    "yarn": "^1.22.0"
   },
   "eslintConfig": {
     "extends": [
